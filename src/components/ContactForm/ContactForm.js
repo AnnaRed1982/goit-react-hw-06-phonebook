@@ -1,7 +1,13 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
+
 import PropTypes from 'prop-types';
 import css from 'components/ContactForm/ContactForm.module.css';
 
-export const ContactForm = ({ onSubmit, contacts }) => {
+export const ContactForm = () => {
+  const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
     const { name, number } = e.target.elements;
@@ -12,7 +18,7 @@ export const ContactForm = ({ onSubmit, contacts }) => {
       return;
     }
 
-    onSubmit(name.value, number.value);
+    dispatch(addContact(name.value, number.value));
     e.currentTarget.reset();
   };
 
