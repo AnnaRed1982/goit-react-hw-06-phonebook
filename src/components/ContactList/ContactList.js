@@ -1,10 +1,7 @@
-// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import PropTypes from 'prop-types';
-
-// const LS_KEY = 'list_phonebook';
 
 export const ContactList = () => {
   const contacts = useSelector(state => state.contacts.contactsReducer);
@@ -18,14 +15,6 @@ export const ContactList = () => {
     );
   };
 
-  // useEffect(
-  //   prevContacts => {
-  //     if (prevContacts !== contacts) {
-  //       localStorage.setItem(LS_KEY, JSON.stringify(contacts));
-  //     }
-  //   },
-  //   [contacts]
-  // );
   return (
     <ul>
       {getVisibleContacts().map(({ id, name, number }) => {
